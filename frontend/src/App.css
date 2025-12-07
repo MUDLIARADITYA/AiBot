@@ -1,0 +1,168 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Chat styles */
+.chat-root {
+  box-sizing: border-box;
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 2rem);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  background: linear-gradient(180deg, rgba(8,10,14,0.85), rgba(12,14,18,0.95));
+  padding: 0.75rem;
+}
+
+/* Ensure the page root takes full viewport */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #050609;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.chat-main {
+  flex: 1 1 auto;
+  padding: 0.8rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 0; /* allow proper scrolling inside flex */
+}
+.empty {
+  color: #9aa3b2;
+  text-align: center;
+  margin-top: 2rem;
+  font-style: italic;
+}
+.msg { display: flex; }
+.msg.user { justify-content: flex-end; }
+.msg.ai { justify-content: flex-start; }
+.msg.system { justify-content: center; }
+.bubble {
+  max-width: 78%;
+  padding: 0.7rem 1rem;
+  border-radius: 14px;
+  line-height: 1.4;
+  font-size: 0.97rem;
+  box-shadow: 0 4px 18px rgba(2,6,23,0.6);
+}
+.msg.user .bubble { background: linear-gradient(180deg,#2a68d1,#184fa8); color: white; border-bottom-right-radius: 6px; border-top-right-radius: 6px }
+.msg.ai .bubble { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); color: #e6eef8; border-bottom-left-radius: 6px; border-top-left-radius: 6px }
+.msg.system .bubble { background: transparent; color: #8f9aa6 }
+.chat-footer {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  align-items: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+  flex-shrink: 0;
+}
+.chat-footer textarea {
+  flex: 1 1 auto;
+  resize: none;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(10,12,16,0.6);
+  color: #e6eef8;
+  font-family: inherit;
+  outline: none;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+.chat-footer .send {
+  background: linear-gradient(180deg,#3aa0ff,#2271d8);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+/* Layout container to make chat fill available width and center content on wide screens */
+.chat-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.status { font-size: 0.9rem }
+.status.online { color: green }
+.status.offline { color: #c0392b }
+
+/* Scrollbar styling for modern browsers */
+.chat-main::-webkit-scrollbar { width: 12px }
+.chat-main::-webkit-scrollbar-track { background: transparent }
+.chat-main::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 8px }
+
+/* Lightweight responsive tweaks */
+@media (max-width: 600px) {
+  .chat-root { height: 88vh; margin: 0.75rem; }
+  .bubble { max-width: 84%; font-size: 0.95rem }
+  .chat-header h2 { font-size: 1.05rem }
+}
+
+/* Interaction states */
+.chat-footer textarea:focus { box-shadow: 0 6px 20px rgba(34,113,216,0.12); transform: translateY(-1px); }
+.chat-footer .send:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(34,113,216,0.18) }
+
+/* Subtle fade-in for messages */
+.msg { animation: fadeIn 220ms ease both }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: translateY(0) } }
