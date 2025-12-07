@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 import './App.css';
 
 // Backend socket server URL
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:3000';
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'https://aibot-kwhr.onrender.com';
 
 function App() {
   // Chat messages store karne ke liye
